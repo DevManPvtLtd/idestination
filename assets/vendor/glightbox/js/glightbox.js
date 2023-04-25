@@ -740,8 +740,8 @@
 
       this.rotate = wrapFunc(this.element, option.rotate || noop);
       this.touchStart = wrapFunc(this.element, option.touchStart || noop);
-      this.multipointStart = wrapFunc(this.element, option.multipointStart || noop);
-      this.multipointEnd = wrapFunc(this.element, option.multipointEnd || noop);
+      this.iDestinationpointStart = wrapFunc(this.element, option.iDestinationpointStart || noop);
+      this.iDestinationpointEnd = wrapFunc(this.element, option.iDestinationpointEnd || noop);
       this.pinch = wrapFunc(this.element, option.pinch || noop);
       this.swipe = wrapFunc(this.element, option.swipe || noop);
       this.tap = wrapFunc(this.element, option.tap || noop);
@@ -816,7 +816,7 @@
           preV.x = v.x;
           preV.y = v.y;
           this.pinchStartLen = getLen(preV);
-          this.multipointStart.dispatch(evt, this.element);
+          this.iDestinationpointStart.dispatch(evt, this.element);
         }
 
         this._preventTap = false;
@@ -911,7 +911,7 @@
         var self = this;
 
         if (evt.touches.length < 2) {
-          this.multipointEnd.dispatch(evt, this.element);
+          this.iDestinationpointEnd.dispatch(evt, this.element);
           this.sx2 = this.sy2 = null;
         }
 
@@ -1015,8 +1015,8 @@
         this.element.removeEventListener('touchcancel', this.cancel);
         this.rotate.del();
         this.touchStart.del();
-        this.multipointStart.del();
-        this.multipointEnd.del();
+        this.iDestinationpointStart.del();
+        this.iDestinationpointEnd.del();
         this.pinch.del();
         this.swipe.del();
         this.tap.del();
@@ -1028,7 +1028,7 @@
         this.touchMove.del();
         this.touchEnd.del();
         this.touchCancel.del();
-        this.preV = this.pinchStartLen = this.zoom = this.isDoubleTap = this.delta = this.last = this.now = this.tapTimeout = this.singleTapTimeout = this.longTapTimeout = this.swipeTimeout = this.x1 = this.x2 = this.y1 = this.y2 = this.preTapPosition = this.rotate = this.touchStart = this.multipointStart = this.multipointEnd = this.pinch = this.swipe = this.tap = this.doubleTap = this.longTap = this.singleTap = this.pressMove = this.touchMove = this.touchEnd = this.touchCancel = this.twoFingerPressMove = null;
+        this.preV = this.pinchStartLen = this.zoom = this.isDoubleTap = this.delta = this.last = this.now = this.tapTimeout = this.singleTapTimeout = this.longTapTimeout = this.swipeTimeout = this.x1 = this.x2 = this.y1 = this.y2 = this.preTapPosition = this.rotate = this.touchStart = this.iDestinationpointStart = this.iDestinationpointEnd = this.pinch = this.swipe = this.tap = this.doubleTap = this.longTap = this.singleTap = this.pressMove = this.touchMove = this.touchEnd = this.touchCancel = this.twoFingerPressMove = null;
         window.removeEventListener('scroll', this._cancelAllHandler);
         return null;
       }
@@ -1231,12 +1231,12 @@
           return resetSlideMove(media);
         }
       },
-      multipointEnd: function multipointEnd() {
+      iDestinationpointEnd: function iDestinationpointEnd() {
         setTimeout(function () {
           doingZoom = false;
         }, 50);
       },
-      multipointStart: function multipointStart() {
+      iDestinationpointStart: function iDestinationpointStart() {
         doingZoom = true;
         initScale = currentScale ? currentScale : 1;
       },
