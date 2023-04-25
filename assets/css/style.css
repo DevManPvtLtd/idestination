@@ -1,7 +1,7 @@
 /**
-* Template Name: Multi
+* Template Name: iDestination
 * Updated: Mar 10 2023 with Bootstrap v5.2.3
-* Template URL: https://devman.com/multi-responsive-bootstrap-template/
+* Template URL: https://devman.com/iDestination-responsive-bootstrap-template/
 * Author: devman.com
 * License: https://devman.com/license/
 */
